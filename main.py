@@ -79,6 +79,7 @@ def init_nets(net_configs, n_parties, args, device='cpu'):
         for net_i in range(n_parties):
             if args.model == 'simple-cnn':
                 net = SimpleCNNMNIST(input_dim=(16 * 4 * 4), hidden_dims=[120, 84], output_dim=10)
+            
             # NOTE: the following lines are adopted by WY to do experiments with ConvNetBN in Distribution Matching
             elif args.model == 'ConvNetBn':
                 if args.dataset == 'cifar10':
@@ -87,6 +88,7 @@ def init_nets(net_configs, n_parties, args, device='cpu'):
                 else:
                     raise TypeError('Please specify the dataset as cifar10')
                 net = ConvNet(channel=channel, num_classes=num_classes, net_width=net_width, net_depth=net_depth, net_act=net_act, net_norm='batchnorm', net_pooling=net_pooling, im_size=im_size)
+            
             if device == 'cpu':
                 net.to(device)
             else:
