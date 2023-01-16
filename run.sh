@@ -1,0 +1,52 @@
+# CUDA_VISIBLE_DEVICES=0 python experiments.py --model=simple-cnn \
+# 	--dataset=cifar10 \
+# 	--alg=fednova \
+# 	--lr=0.01 \
+# 	--batch-size=64 \
+# 	--epochs=10 \
+# 	--n_parties=10 \
+# 	--rho=0.9 \
+# 	--comm_round=50 \
+# 	--partition=noniid-labeldir \
+# 	--beta=0.5\
+# 	--device='cpu'\
+# 	--datadir='./data/' \
+# 	--logdir='./logs/' \
+# 	--noise=0\
+# 	--init_seed=0
+
+# python experiments.py --model=simple-cnn \
+#     --dataset=cifar10 \
+#     --alg=fedprox \
+#     --lr=0.01 \
+#     --batch-size=64 \
+#     --epochs=10 \
+#     --n_parties=10 \
+#     --mu=0.01 \
+#     --rho=0.9 \
+#     --comm_round=50 \
+#     --partition=noniid-labeldir \
+#     --beta=0.5\
+#     --device='cuda:0'\
+#     --datadir='./data/' \
+#     --logdir='./logs/' \
+#     --noise=0 \
+#     --sample=1 \
+#     --init_seed=0
+
+CUDA_VISIBLE_DEVICES=0 python experiments.py --model=ConvNetBN \
+	--normal_model=1 \
+	--dataset=cifar10 \
+    --alg=fedprox \
+    --lr=0.01 \
+	--batch-size=64 \
+    --mu=0.01 \
+    --epochs=10 \
+    --comm_round=20 \
+    --n_parties=10 \
+    --partition=noniid-labeldir \
+    --beta=0.1 \
+	--device='cuda' \
+    --logdir='./logs/' \
+    --datadir='./data/' \
+	--init_seed=0
