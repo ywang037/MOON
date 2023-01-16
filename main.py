@@ -9,7 +9,7 @@ import os
 import copy
 import datetime
 import random
-
+import time
 
 from model import *
 from utils import *
@@ -401,6 +401,7 @@ def local_train_net(nets, args, net_dataidx_map, train_dl=None, test_dl=None, gl
 
 
 if __name__ == '__main__':
+    time_start = time.time() 
     args = get_args()
     mkdirs(args.logdir)
     mkdirs(args.modeldir)
@@ -694,3 +695,7 @@ if __name__ == '__main__':
 
         torch.save(nets[0].state_dict(), args.modeldir+'all_in/'+args.log_file_name+ '.pth')
 
+    time_end = time.time()
+    time_end_stamp = time.strftime('%Y-%m-%d %H:%M:%S') # time_end_stamp = time.strftime('%y-%m-%d-%H-%M-%S')
+    sesseion_time = int((time_end-time_start)/60)   
+    print('-------------------------\nSession: Exp completed at {}, time elapsed: {} mins. Best round acc: {:.2f}%.'.format(time_end_stamp, sesseion_time, round_max_acc*100))
