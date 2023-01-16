@@ -34,19 +34,4 @@
 #     --sample=1 \
 #     --init_seed=0
 
-CUDA_VISIBLE_DEVICES=0 python main.py --model=ConvNetBN \
-	--normal_model=1 \
-	--dataset=cifar10 \
-    --alg=fedprox \
-    --lr=0.01 \
-	--batch-size=64 \
-    --mu=0.01 \
-    --epochs=10 \
-    --comm_round=20 \
-    --n_parties=10 \
-    --partition=noniid-labeldir \
-    --beta=0.1 \
-	--device='cuda' \
-    --logdir='./logs/' \
-    --datadir='./data/' \
-	--init_seed=0
+CUDA_VISIBLE_DEVICES=0 python main.py --model=ConvNetBN --normal_model=1 --dataset=cifar10 --alg=fedprox --lr=0.01 --batch-size=64 --mu=0.01 --epochs=10 --comm_round=20 --n_parties=10 --partition=noniid-labeldir --beta=0.1 --device='cuda' --logdir='./logs/fedprox/exp0' --init_seed=0
