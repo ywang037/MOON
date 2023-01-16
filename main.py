@@ -632,6 +632,7 @@ if __name__ == '__main__':
     elif args.alg == 'fedprox':
 
         for round in range(n_comm_rounds):
+            print('=============== Round {} started ============'.format(round))
             logger.info("in comm round:" + str(round))
             party_list_this_round = party_list_rounds[round]
             global_w = global_model.state_dict()
