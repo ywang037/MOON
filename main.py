@@ -223,7 +223,8 @@ def train_net_fedprox(net_id, net, global_net, train_dataloader, test_dataloader
             target.requires_grad = False
             target = target.long()
 
-            _,_,out = net(x)
+            out = net(x) # this line is adopted by WY to do experiment with ConvNetBN
+            # _,_,out = net(x)
             loss = criterion(out, target)
 
             # for fedprox
