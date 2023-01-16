@@ -79,6 +79,14 @@ def init_nets(net_configs, n_parties, args, device='cpu'):
         for net_i in range(n_parties):
             if args.model == 'simple-cnn':
                 net = SimpleCNNMNIST(input_dim=(16 * 4 * 4), hidden_dims=[120, 84], output_dim=10)
+            # NOTE: the following lines are adopted by WY to do experiments with ConvNetBN in Distribution Matching
+            elif args.model == 'ConvNetBn':
+                if args.dataset == 'cifar10':
+                    channel, im_size, num_classes = 3, (32, 32), 10
+                    net_width, net_depth, net_act, net_norm, net_pooling = 128, 3, 'relu', 'instancenorm', 'avgpooling'
+                else:
+                    raise TypeError('Please specify the dataset as cifar10')
+                net = ConvNet(channel=channel, num_classes=num_classes, net_width=net_width, net_depth=net_depth, net_act=net_act, net_norm='batchnorm', net_pooling=net_pooling, im_size=im_size)
             if device == 'cpu':
                 net.to(device)
             else:
@@ -458,6 +466,12 @@ if __name__ == '__main__':
         global_model.load_state_dict(torch.load(args.load_model_file))
         n_comm_rounds -= args.load_model_round
 
+    # NOTE: the following lines of code is adopted by WY
+    # Starts here
+    round_max_acc = 0
+    
+    
+    
     if args.server_momentum:
         moment_v = copy.deepcopy(global_model.state_dict())
         for key in moment_v:
@@ -650,6 +664,12 @@ if __name__ == '__main__':
             logger.info('>> Global Model Train accuracy: %f' % train_acc)
             logger.info('>> Global Model Test accuracy: %f' % test_acc)
             logger.info('>> Global Model Train loss: %f' % train_loss)
+            
+            # the following lines are adopted by WY to record the best accuracy achieved in the experiment
+            if test_acc>round_max_acc:
+                round_max_acc = test_acc
+            logger.info('>> Global Model best historical test accuracy: %f' % round_max_acc)
+
             mkdirs(args.modeldir + 'fedprox/')
             global_model.to('cpu')
             torch.save(global_model.state_dict(), args.modeldir +'fedprox/'+args.log_file_name+ '.pth')
