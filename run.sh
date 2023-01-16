@@ -1,4 +1,4 @@
-# CUDA_VISIBLE_DEVICES=0 python experiments.py --model=simple-cnn \
+# CUDA_VISIBLE_DEVICES=0 python main.py --model=simple-cnn \
 # 	--dataset=cifar10 \
 # 	--alg=fednova \
 # 	--lr=0.01 \
@@ -15,7 +15,7 @@
 # 	--noise=0\
 # 	--init_seed=0
 
-# python experiments.py --model=simple-cnn \
+# python main.py --model=simple-cnn \
 #     --dataset=cifar10 \
 #     --alg=fedprox \
 #     --lr=0.01 \
@@ -34,7 +34,7 @@
 #     --sample=1 \
 #     --init_seed=0
 
-CUDA_VISIBLE_DEVICES=0 python experiments.py --model=ConvNetBN \
+CUDA_VISIBLE_DEVICES=0 python main.py --model=ConvNetBN \
 	--normal_model=1 \
 	--dataset=cifar10 \
     --alg=fedprox \
