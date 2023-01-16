@@ -220,7 +220,9 @@ def compute_accuracy(model, dataloader, get_confusion_matrix=False, device="cpu"
                 #print("x:",x)
                 if device != 'cpu':
                     x, target = x.cuda(), target.to(dtype=torch.int64).cuda()
-                _,_,out = model(x)
+                
+                out = model(x) # this line is adopted by WY to do experiment with ConvNetBN
+                # _,_,out = model(x)
                 loss = criterion(out, target)
                 _, pred_label = torch.max(out.data, 1)
                 loss_collector.append(loss.item())
