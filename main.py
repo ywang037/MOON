@@ -82,9 +82,12 @@ def init_nets(net_configs, n_parties, args, device='cpu'):
             
             # NOTE: the following lines are adopted by WY to do experiments with ConvNetBN in Distribution Matching
             elif args.model == 'ConvNetBN':
-                if args.dataset == 'cifar10':
+                if args.dataset in ['cifar10','CIFAR10']:
                     channel, im_size, num_classes = 3, (32, 32), 10
-                    net_width, net_depth, net_act, net_norm, net_pooling = 128, 3, 'relu', 'instancenorm', 'avgpooling'
+                    net_width, net_depth, net_act, net_norm, net_pooling = 128, 3, 'relu', 'batchnorm', 'avgpooling'
+                elif args.dataset in ['cifar100','CIFAR100']:
+                    channel, im_size, num_classes = 3, (32, 32), 100
+                    net_width, net_depth, net_act, net_norm, net_pooling = 128, 3, 'relu', 'batchnorm', 'avgpooling'
                 else:
                     raise TypeError('Please specify the dataset as cifar10')
                 net = ConvNet(channel=channel, num_classes=num_classes, net_width=net_width, net_depth=net_depth, net_act=net_act, net_norm='batchnorm', net_pooling=net_pooling, im_size=im_size)
