@@ -1,5 +1,5 @@
-python main.py --dataset=cifar10 \
-    --model=simple-cnn \
+CUDA_VISIBLE_DEVICES=2 python main.py --dataset=cifar10 \
+    --model=convnet \
     --alg=moon \
     --lr=0.01 \
     --mu=5 \
@@ -10,8 +10,9 @@ python main.py --dataset=cifar10 \
     --beta=0.5 \
     --logdir='./logs/' \
     --datadir='./data/' \
-    --device="cpu" \
-    --init_seed=42
+    --device="cuda" \
+    --init_seed=42 \
+    --normal_model=1
 
 
 # CUDA_VISIBLE_DEVICES=0 python main.py --model=simple-cnn \
