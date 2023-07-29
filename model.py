@@ -660,7 +660,7 @@ class ConvNet(nn.Module):
 
     def forward(self, x):
         h = self.features(x)
-        h = out.view(h.size(0), -1)
+        h = h.view(h.size(0), -1)
         out = self.classifier(h)
         return h, h, out
 
