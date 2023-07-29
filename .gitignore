@@ -1,0 +1,42 @@
+__pycache__/
+__pycache__
+*.pth
+*/**/__pycache__
+*/*.pyc
+*/**/*.pyc
+*/**/**/*.pyc
+*/**/**/**/*.pyc
+*/**/**/**/**/*.pyc
+.mypy_cache
+
+result/
+result
+result-feddm-bench/
+result-feddm-bench
+results
+results/
+result-bin
+result-bin/
+data
+data/
+arxiv/
+arxiv
+other
+logs/
+
+# IPython notebook checkpoints
+.ipynb_checkpoints
+
+# Editor temporaries
+*.swn
+*.swo
+*.swp
+*~
+
+# macOS dir files
+.DS_Store
+
+.gdb_history
+
+.pth
+.pt
