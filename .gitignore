@@ -23,6 +23,7 @@ arxiv/
 arxiv
 other
 logs/
+models/
 
 # IPython notebook checkpoints
 .ipynb_checkpoints
