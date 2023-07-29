@@ -1,3 +1,19 @@
+python main.py --dataset=cifar10 \
+    --model=simple-cnn \
+    --alg=moon \
+    --lr=0.01 \
+    --mu=5 \
+    --epochs=1 \
+    --comm_round=2 \
+    --n_parties=10 \
+    --partition=noniid \
+    --beta=0.5 \
+    --logdir='./logs/' \
+    --datadir='./data/' \
+    --device="cpu" \
+    --init_seed=42
+
+
 # CUDA_VISIBLE_DEVICES=0 python main.py --model=simple-cnn \
 # 	--dataset=cifar10 \
 # 	--alg=fednova \
@@ -33,14 +49,3 @@
 #     --noise=0 \
 #     --sample=1 \
 #     --init_seed=0
-
-# # CIFAR10
-# CUDA_VISIBLE_DEVICES=3 python main.py --model=ConvNetBN --normal_model=1 --dataset=cifar10 --alg=fedprox --lr=0.01 --batch-size=64 --mu=0.01 --epochs=20 --comm_round=10 --n_parties=10 --partition=noniid-labeldir --beta=0.1 --device='cuda' --logdir='./logs/fedprox_cifar10_(ep20,lr0.01,mu0.01,r10)/exp0' --init_seed=0
-# CUDA_VISIBLE_DEVICES=3 python main.py --model=ConvNetBN --normal_model=1 --dataset=cifar10 --alg=fedprox --lr=0.01 --batch-size=64 --mu=0.01 --epochs=20 --comm_round=10 --n_parties=10 --partition=noniid-labeldir --beta=0.1 --device='cuda' --logdir='./logs/fedprox_cifar10_(ep20,lr0.01,mu0.01,r10)/exp1' --init_seed=1
-# CUDA_VISIBLE_DEVICES=3 python main.py --model=ConvNetBN --normal_model=1 --dataset=cifar10 --alg=fedprox --lr=0.01 --batch-size=64 --mu=0.01 --epochs=20 --comm_round=10 --n_parties=10 --partition=noniid-labeldir --beta=0.1 --device='cuda' --logdir='./logs/fedprox_cifar10_(ep20,lr0.01,mu0.01,r10)/exp2' --init_seed=2
-
-# CIFAR100
-CUDA_VISIBLE_DEVICES=0 python main.py --model=ConvNetBN --normal_model=1 --dataset=cifar100 --alg=fedprox --lr=0.1 --batch-size=64 --mu=0.01 --epochs=20 --comm_round=10 --n_parties=10 --partition=noniid-labeldir --beta=0.1 --device='cuda' --logdir='./logs/fedprox_cifar100_(ep20,lr0.1,mu0.01,r10)/exp0' --init_seed=0
-CUDA_VISIBLE_DEVICES=0 python main.py --model=ConvNetBN --normal_model=1 --dataset=cifar100 --alg=fedprox --lr=0.1 --batch-size=64 --mu=0.01 --epochs=20 --comm_round=10 --n_parties=10 --partition=noniid-labeldir --beta=0.1 --device='cuda' --logdir='./logs/fedprox_cifar100_(ep20,lr0.1,mu0.01,r10)/exp1' --init_seed=1
-CUDA_VISIBLE_DEVICES=0 python main.py --model=ConvNetBN --normal_model=1 --dataset=cifar100 --alg=fedprox --lr=0.1 --batch-size=64 --mu=0.01 --epochs=20 --comm_round=10 --n_parties=10 --partition=noniid-labeldir --beta=0.1 --device='cuda' --logdir='./logs/fedprox_cifar100_(ep20,lr0.1,mu0.01,r10)/exp2' --init_seed=2
-
